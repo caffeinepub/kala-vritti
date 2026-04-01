@@ -1,0 +1,163 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0.625rem;
+
+    /* Kala Vritti — Warm Ivory & Deep Maroon */
+    /* ivory/soft beige #EFE3D4 → oklch(0.91 0.032 74) */
+    --background: 0.91 0.032 74;
+    /* off-white card #F6EBDD → oklch(0.94 0.025 78) */
+    --card: 0.94 0.025 78;
+    --card-foreground: 0.18 0.035 25;
+    --popover: 0.94 0.025 78;
+    --popover-foreground: 0.18 0.035 25;
+    /* dark brown text #2A1A1A → oklch(0.20 0.030 25) */
+    --foreground: 0.2 0.03 25;
+    /* deep maroon #5A1F25 → oklch(0.32 0.095 17) */
+    --primary: 0.32 0.095 17;
+    --primary-foreground: 0.97 0.012 75;
+    /* blush #E7B7B3 → oklch(0.80 0.068 14) */
+    --secondary: 0.8 0.068 14;
+    --secondary-foreground: 0.25 0.05 20;
+    --muted: 0.88 0.025 75;
+    --muted-foreground: 0.52 0.03 45;
+    /* champagne gold #D8B68A → oklch(0.79 0.072 65) */
+    --accent: 0.79 0.072 65;
+    --accent-foreground: 0.2 0.03 25;
+    --destructive: 0.577 0.245 27.325;
+    --destructive-foreground: 0.985 0 0;
+    /* taupe border #CBB7A3 → oklch(0.77 0.038 68) */
+    --border: 0.77 0.038 68;
+    --input: 0.77 0.038 68;
+    --ring: 0.32 0.095 17;
+    --chart-1: 0.646 0.222 41.116;
+    --chart-2: 0.6 0.118 184.704;
+    --chart-3: 0.398 0.07 227.392;
+    --chart-4: 0.828 0.189 84.429;
+    --chart-5: 0.769 0.188 70.08;
+    --sidebar: 0.94 0.025 78;
+    --sidebar-foreground: 0.2 0.03 25;
+    --sidebar-primary: 0.32 0.095 17;
+    --sidebar-primary-foreground: 0.97 0.012 75;
+    --sidebar-accent: 0.79 0.072 65;
+    --sidebar-accent-foreground: 0.2 0.03 25;
+    --sidebar-border: 0.77 0.038 68;
+    --sidebar-ring: 0.32 0.095 17;
+
+    /* Brand custom */
+    --maroon: 0.32 0.095 17;
+    --maroon-dark: 0.22 0.075 17;
+    --blush: 0.8 0.068 14;
+    --gold: 0.79 0.072 65;
+    --ivory: 0.91 0.032 74;
+    --cream: 0.94 0.025 78;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "DM Sans", sans-serif;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 200px 200px;
+  }
+}
+
+/* Mandala corner decoration */
+.mandala-corner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 120px;
+  height: 120px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120' opacity='0.15'%3E%3Ccircle cx='0' cy='0' r='60' fill='none' stroke='%235A1F25' stroke-width='0.5'/%3E%3Ccircle cx='0' cy='0' r='45' fill='none' stroke='%235A1F25' stroke-width='0.5'/%3E%3Ccircle cx='0' cy='0' r='30' fill='none' stroke='%235A1F25' stroke-width='0.5'/%3E%3Cline x1='0' y1='0' x2='120' y2='0' stroke='%235A1F25' stroke-width='0.3'/%3E%3Cline x1='0' y1='0' x2='0' y2='120' stroke='%235A1F25' stroke-width='0.3'/%3E%3Cline x1='0' y1='0' x2='85' y2='85' stroke='%235A1F25' stroke-width='0.3'/%3E%3Cpath d='M0,0 Q30,15 60,0' fill='none' stroke='%235A1F25' stroke-width='0.4'/%3E%3Cpath d='M0,0 Q15,30 0,60' fill='none' stroke='%235A1F25' stroke-width='0.4'/%3E%3Cpath d='M0,0 Q20,10 30,0 Q20,10 0,20' fill='none' stroke='%23D8B68A' stroke-width='0.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.mandala-corner-br::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 120px;
+  height: 120px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120' opacity='0.15'%3E%3Ccircle cx='120' cy='120' r='60' fill='none' stroke='%235A1F25' stroke-width='0.5'/%3E%3Ccircle cx='120' cy='120' r='45' fill='none' stroke='%235A1F25' stroke-width='0.5'/%3E%3Ccircle cx='120' cy='120' r='30' fill='none' stroke='%235A1F25' stroke-width='0.5'/%3E%3Cline x1='120' y1='120' x2='0' y2='120' stroke='%235A1F25' stroke-width='0.3'/%3E%3Cline x1='120' y1='120' x2='120' y2='0' stroke='%235A1F25' stroke-width='0.3'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: oklch(var(--ivory));
+}
+::-webkit-scrollbar-thumb {
+  background: oklch(var(--maroon) / 0.4);
+  border-radius: 3px;
+}
+
+/* City pulse animation */
+@keyframes cityPulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.3);
+    opacity: 0.7;
+  }
+}
+
+@keyframes dashDraw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
